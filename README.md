@@ -1,2 +1,5 @@
-# website
-BoulderJS website and blog
+# BoulderJS Website
+
+```sh
+npx degit solidjs/templates/js
+```
