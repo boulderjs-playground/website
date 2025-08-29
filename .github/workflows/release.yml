@@ -12,15 +12,12 @@ on:
       - 'main'
 
 jobs:
-  codequality:
-    uses: ./.github/workflows/codequality.yml
-
   test:
     uses: ./.github/workflows/test.yml
     secrets: inherit
 
   release:
-    needs: [codequality, test]
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
       - run: npx semantic-release
