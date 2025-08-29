@@ -1,0 +1,19 @@
+name: Pull Request
+
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+
+jobs:
+  codequality:
+    uses: ./.github/workflows/codequality.yml
+
+  test:
+    uses: ./.github/workflows/test.yml
+    secrets: inherit
+
+  coverage:
+    uses: ./.github/workflows/coverage.yml
+    secrets: inherit
