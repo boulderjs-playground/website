@@ -1,0 +1,61 @@
+{
+  "name": "vite-template-solid",
+  "version": "0.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boulderjs-playground/website.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "codestyle": "prettier --check .",
+    "dev": "vite",
+    "lint": "eslint --max-warnings=0",
+    "serve": "vite preview",
+    "start": "vite",
+    "test": "node --test",
+    "test:coverage": "node --experimental-test-coverage --test"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,json,md,yaml}": [
+      "prettier --write"
+    ],
+    "*.js": [
+      "eslint --cache --fix"
+    ]
+  },
+  "release": {
+    "branches": "main",
+    "success": false,
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/github"
+    ]
+  },
+  "dependencies": {
+    "solid-js": "^1.9.5"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@eslint/js": "^9.34.0",
+    "@eslint/json": "^0.13.2",
+    "@eslint/markdown": "^7.2.0",
+    "eslint": "^9.34.0",
+    "eslint-plugin-solid": "^0.14.5",
+    "globals": "^16.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "prettier": "^3.6.2",
+    "vite": "^6.0.0",
+    "vite-plugin-solid": "^2.11.6"
+  }
+}

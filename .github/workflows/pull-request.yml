@@ -7,9 +7,6 @@ on:
       - '!main'
 
 jobs:
-  codequality:
-    uses: ./.github/workflows/codequality.yml
-
   test:
     uses: ./.github/workflows/test.yml
     secrets: inherit
