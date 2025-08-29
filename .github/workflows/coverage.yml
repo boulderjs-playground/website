@@ -1,0 +1,33 @@
+name: Coverage
+
+on: workflow_call
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    env:
+      CI: true
+      NODE_ENV: test
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: "npm"
+      - run: npm ci --no-fund --no-audit
+      - name: Coverage Report
+        run: npm run test:coverage
+
+      # - name: Upload test results to Codecov
+      #   if: ${{ !cancelled() }}
+      #   uses: codecov/test-results-action@v1
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     verbose: true
