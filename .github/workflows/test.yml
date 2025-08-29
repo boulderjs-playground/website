@@ -1,0 +1,27 @@
+name: Test
+
+on: workflow_call
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    env:
+      CI: true
+      NODE_ENV: test
+      DATABASE_URL: postgres://omd:s3cret@localhost:5432/postgres?schema=omd
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: "npm"
+      - run: npm ci --no-fund --no-audit
+      - name: Test
+        run: npm test
